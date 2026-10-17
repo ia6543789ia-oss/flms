@@ -129,15 +129,9 @@ function renderRelatedVideos() {
     }
 }
 
-// TELA CHEIA E ROTAÇÃO AUTOMÁTICA PARA HORIZONTAL NO CELULAR
-async function handleFullscreenAndRotate() {
+// TELA CHEIA OTIMIZADA PARA MOBILE
+async function handleFullscreen() {
     try {
-        // Tenta forçar a orientação horizontal (paisagem) se a API do celular permitir
-        if (screen.orientation && screen.orientation.lock) {
-            await screen.orientation.lock('landscape').catch(() => {});
-        }
-
-        // Entra em tela cheia no container do vídeo
         if (!document.fullscreenElement) {
             if (videoContainer.requestFullscreen) {
                 await videoContainer.requestFullscreen();
@@ -147,10 +141,12 @@ async function handleFullscreenAndRotate() {
         } else {
             if (document.exitFullscreen) {
                 await document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                await document.webkitExitFullscreen();
             }
         }
     } catch (err) {
-        console.log("Modo tela cheia/rotação acionado via fallback.", err);
+        console.log("Erro ao acionar tela cheia:", err);
     }
 }
 
@@ -166,5 +162,5 @@ function setupEventListeners() {
     });
 
     backBtn.addEventListener('click', closePlayer);
-    rotateFullscreenBtn.addEventListener('click', handleFullscreenAndRotate);
+    rotateFullscreenBtn.addEventListener('click', handleFullscreen);
 }

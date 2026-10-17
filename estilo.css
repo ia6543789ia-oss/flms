@@ -228,12 +228,12 @@ body {
     left: 0;
 }
 
-/* BOTÃO DE TELA CHEIA / ROTAÇÃO */
+/* BOTÃO DE TELA CHEIA MOBILE */
 .rotate-fullscreen-btn {
-    background: var(--bg-card);
+    background: var(--primary);
     color: var(--text-main);
-    border: 1px solid var(--bg-hover);
-    padding: 0.6rem 1rem;
+    border: none;
+    padding: 0.75rem 1rem;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
@@ -243,10 +243,11 @@ body {
     gap: 0.5rem;
     transition: background 0.2s;
     width: 100%;
+    font-size: 1rem;
 }
 
 .rotate-fullscreen-btn:hover {
-    background: var(--primary);
+    background: var(--primary-hover);
 }
 
 /* SIDEBAR E VÍDEOS RELACIONADOS */
@@ -329,8 +330,8 @@ body {
 @media (max-width: 640px) {
     .header {
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
     }
 
     .search-box {
@@ -338,10 +339,16 @@ body {
     }
 
     .container {
-        padding: 0.75rem;
+        padding: 0.5rem;
+    }
+
+    .video-container {
+        border-radius: 8px;
     }
 
     .btn-back {
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 }
