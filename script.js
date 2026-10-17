@@ -1,13 +1,22 @@
-// LISTA DE VÍDEOS (Configurado com o link de incorporação do Google Drive)
+// LISTA DE VÍDEOS (O vídeo 1 abre no site via Google Drive, o vídeo 2 redireciona direto para o YouTube)
 const videosData = [
     {
         id: 1,
-        title: "Juntos Novamente (Together Again)",
+        title: "Juntos Novamene (Together Again)",
         description: "Aparentemente, algo significativo!",
-        duration: "46:24",
-        // Link estruturado no formato de incorporação (/preview) para funcionar perfeitamente em qualquer navegador
+        duration: "47:24",
+        type: "drive",
         src: "https://drive.google.com/file/d/1EKidCwAOuySNkAehRMEx8gYSNh2m7Q8t/preview", 
-        poster: "video/main.png"  // Sua imagem de capa na pasta video
+        poster: "video/main.png"
+    },
+    {
+        id: 2,
+        title: "Vídeo Explicativo (YouTube) - SÓ ASSISTA DEPOIS DE VER O EPISÓDIO",
+        description: "Explicação/dedução coerente!",
+        duration: "18:25",
+        type: "youtube",
+        src: "https://youtu.be/517Zkq0_qC0?si=2DeJgGgWTkwoj03l", 
+        poster: "video/main2.png"
     }
 ];
 
@@ -20,7 +29,7 @@ const relatedSection = document.getElementById('relatedSection');
 const playerLayout = document.getElementById('playerLayout');
 const searchInput = document.getElementById('searchInput');
 
-const driveIframe = document.getElementById('driveIframe');
+const mainIframe = document.getElementById('mainIframe');
 const backBtn = document.getElementById('backBtn');
 const currentTitle = document.getElementById('currentTitle');
 const currentDesc = document.getElementById('currentDesc');
@@ -47,7 +56,7 @@ function renderVideoGrid(list) {
         card.innerHTML = `
             <div class="card-thumbnail">
                 <img src="${video.poster}" alt="${video.title}">
-                <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                <div class="play-overlay"><i class="fa-solid ${video.type === 'youtube' ? 'fa-arrow-up-right-from-square' : 'fa-play'}"></i></div>
                 <span class="badge-duration">${video.duration}</span>
             </div>
             <div class="card-info">
@@ -55,15 +64,24 @@ function renderVideoGrid(list) {
                 <p>${video.description}</p>
             </div>
         `;
-        card.addEventListener('click', () => openPlayer(video));
+        card.addEventListener('click', () => handleVideoClick(video));
         videoGrid.appendChild(card);
     });
 }
 
-// ABRIR PLAYER COM O VÍDEO SELECIONADO
+// CONTROLAR CLIQUE NO VÍDEO (Se for YouTube, abre direto no YT; se for Drive, abre no player do site)
+function handleVideoClick(video) {
+    if (video.type === 'youtube') {
+        window.open(video.src, '_blank'); // Abre o YouTube diretamente em nova aba
+    } else {
+        openPlayer(video);
+    }
+}
+
+// ABRIR PLAYER COM O VÍDEO DO DRIVE
 function openPlayer(video) {
     currentVideoObj = video;
-    driveIframe.src = video.src;
+    mainIframe.src = video.src;
     currentTitle.textContent = video.title;
     currentDesc.textContent = video.description;
 
@@ -75,7 +93,7 @@ function openPlayer(video) {
 
 // VOLTAR PARA O CATÁLOGO
 function closePlayer() {
-    driveIframe.src = ''; // Para o vídeo ao sair
+    mainIframe.src = ''; 
     playerSection.classList.add('hidden');
     catalogSection.classList.remove('hidden');
 }
@@ -103,7 +121,7 @@ function renderRelatedVideos() {
                     <p>${video.duration}</p>
                 </div>
             `;
-            card.addEventListener('click', () => openPlayer(video));
+            card.addEventListener('click', () => handleVideoClick(video));
             relatedList.appendChild(card);
         });
     }

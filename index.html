@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria de Vídeos</title>
+    <title>CinePlay - Player e Explicação</title>
     <!-- Ícones do FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Arquivo CSS Externo -->
@@ -42,9 +42,9 @@
             </button>
 
             <div class="main-player-layout" id="playerLayout">
-                <!-- Container do Player (Iframe do Google Drive) -->
+                <!-- Container do Player (Para o vídeo principal do Drive) -->
                 <div class="video-container" id="videoContainerWrapper">
-                    <iframe id="driveIframe" src="" allow="autoplay" allowfullscreen></iframe>
+                    <iframe id="mainIframe" src="" allow="autoplay" allowfullscreen></iframe>
                 </div>
 
                 <!-- Painel Lateral de Informações e Próximos Vídeos -->
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="related-section" id="relatedSection">
-                        <h3>Mais Vídeos</h3>
+                        <h3>Mais Vídeos & Explicações</h3>
                         <div id="relatedList" class="related-list"></div>
                     </div>
                 </aside>
