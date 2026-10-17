@@ -42,15 +42,9 @@
             </button>
 
             <div class="main-player-layout" id="playerLayout">
-                <!-- Container do Player Otimizado para Mobile -->
-                <div class="video-container-wrapper" id="videoWrapper">
-                    <div class="video-container" id="videoContainer">
-                        <iframe id="mainIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                    </div>
-                    <!-- Botão de Tela Cheia Otimizado -->
-                    <button id="rotateFullscreenBtn" class="rotate-fullscreen-btn" title="Tela Cheia">
-                        <i class="fa-solid fa-expand"></i> Tela Cheia / Expandir
-                    </button>
+                <!-- Container do Player com Proporção Perfeita (16:9) para Mobile e PC -->
+                <div class="video-container" id="videoContainer">
+                    <iframe id="mainIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
                 </div>
 
                 <!-- Painel Lateral de Informações e Próximos Vídeos -->

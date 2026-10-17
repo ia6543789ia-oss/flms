@@ -15,7 +15,6 @@
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --accent: #22c55e;
-    --overlay-bg: rgba(15, 23, 42, 0.85);
 }
 
 body {
@@ -201,18 +200,11 @@ body {
     grid-template-columns: 1fr;
 }
 
-/* CONTAINER DO PLAYER ADAPTADO PARA MOBILE */
-.video-container-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-}
-
+/* CONTAINER DO PLAYER CORRIGIDO PARA MOBILE (PROPORÇÃO 16:9 PERFEITA) */
 .video-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
@@ -226,28 +218,6 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-}
-
-/* BOTÃO DE TELA CHEIA MOBILE */
-.rotate-fullscreen-btn {
-    background: var(--primary);
-    color: var(--text-main);
-    border: none;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: background 0.2s;
-    width: 100%;
-    font-size: 1rem;
-}
-
-.rotate-fullscreen-btn:hover {
-    background: var(--primary-hover);
 }
 
 /* SIDEBAR E VÍDEOS RELACIONADOS */
@@ -344,6 +314,7 @@ body {
 
     .video-container {
         border-radius: 8px;
+        aspect-ratio: 16 / 9; /* Garante que nunca fique cortado no celular */
     }
 
     .btn-back {

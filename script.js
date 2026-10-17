@@ -6,6 +6,7 @@ const videosData = [
         description: "Aparentemente, algo significativo!",
         duration: "47:24",
         type: "drive",
+        // Usando o formato oficial de incorporação (/preview) do Google Drive para carregar perfeitamente em qualquer dispositivo
         src: "https://drive.google.com/file/d/1EKidCwAOuySNkAehRMEx8gYSNh2m7Q8t/preview", 
         poster: "video/main.png"
     },
@@ -30,8 +31,6 @@ const playerLayout = document.getElementById('playerLayout');
 const searchInput = document.getElementById('searchInput');
 
 const mainIframe = document.getElementById('mainIframe');
-const videoContainer = document.getElementById('videoContainer');
-const rotateFullscreenBtn = document.getElementById('rotateFullscreenBtn');
 const backBtn = document.getElementById('backBtn');
 const currentTitle = document.getElementById('currentTitle');
 const currentDesc = document.getElementById('currentDesc');
@@ -129,27 +128,6 @@ function renderRelatedVideos() {
     }
 }
 
-// TELA CHEIA OTIMIZADA PARA MOBILE
-async function handleFullscreen() {
-    try {
-        if (!document.fullscreenElement) {
-            if (videoContainer.requestFullscreen) {
-                await videoContainer.requestFullscreen();
-            } else if (videoContainer.webkitRequestFullscreen) {
-                await videoContainer.webkitRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                await document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                await document.webkitExitFullscreen();
-            }
-        }
-    } catch (err) {
-        console.log("Erro ao acionar tela cheia:", err);
-    }
-}
-
 // EVENT LISTENERS
 function setupEventListeners() {
     searchInput.addEventListener('input', (e) => {
@@ -162,5 +140,4 @@ function setupEventListeners() {
     });
 
     backBtn.addEventListener('click', closePlayer);
-    rotateFullscreenBtn.addEventListener('click', handleFullscreen);
 }
