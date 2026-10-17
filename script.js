@@ -2,12 +2,12 @@
 const videosData = [
     {
         id: 1,
-        title: "Juntos Novamente (Together Again)",
+        title: "Juntos Novamente (Together Again) bb",
         description: "Aparentemente, algo significativo!",
         duration: "47:24",
         type: "drive",
-        // Usando o formato oficial de incorporação (/preview) do Google Drive para carregar perfeitamente em qualquer dispositivo
-        src: "https://drive.google.com/file/d/1EKidCwAOuySNkAehRMEx8gYSNh2m7Q8t/preview", 
+        // Link direto otimizado para o player nativo do celular
+        src: "https://drive.google.com/uc?export=download&id=1EKidCwAOuySNkAehRMEx8gYSNh2m7Q8t", 
         poster: "video/main.png"
     },
     {
@@ -30,7 +30,7 @@ const relatedSection = document.getElementById('relatedSection');
 const playerLayout = document.getElementById('playerLayout');
 const searchInput = document.getElementById('searchInput');
 
-const mainIframe = document.getElementById('mainIframe');
+const mainVideo = document.getElementById('mainVideo');
 const backBtn = document.getElementById('backBtn');
 const currentTitle = document.getElementById('currentTitle');
 const currentDesc = document.getElementById('currentDesc');
@@ -79,10 +79,10 @@ function handleVideoClick(video) {
     }
 }
 
-// ABRIR PLAYER COM O VÍDEO DO DRIVE
+// ABRIR PLAYER COM O VÍDEO NATIVO
 function openPlayer(video) {
     currentVideoObj = video;
-    mainIframe.src = video.src;
+    mainVideo.src = video.src;
     currentTitle.textContent = video.title;
     currentDesc.textContent = video.description;
 
@@ -90,11 +90,13 @@ function openPlayer(video) {
     playerSection.classList.remove('hidden');
 
     renderRelatedVideos();
+    mainVideo.play().catch(() => {});
 }
 
 // VOLTAR PARA O CATÁLOGO
 function closePlayer() {
-    mainIframe.src = ''; 
+    mainVideo.pause();
+    mainVideo.src = ''; 
     playerSection.classList.add('hidden');
     catalogSection.classList.remove('hidden');
 }
