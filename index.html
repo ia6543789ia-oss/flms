@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Vídeos</title>
+    <!-- Ícones do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Arquivo CSS Externo -->
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho / Banner -->
+    <header class="header">
+        <div class="logo">
+            <i class="fa-solid fa-circle-play"></i>
+            <span>CinePlay</span>
+        </div>
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Pesquisar vídeos...">
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+
+        <!-- Área da Biblioteca de Vídeos -->
+        <section id="catalogSection" class="catalog-section">
+            <h1 class="section-title">Vídeos Disponíveis</h1>
+            <div id="videoGrid" class="video-grid">
+                <!-- Os cards de vídeo serão gerados dinamicamente via JS -->
+            </div>
+        </section>
+
+        <!-- Área do Player de Vídeo -->
+        <section id="playerSection" class="player-section hidden">
+            
+            <button id="backBtn" class="btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Voltar para a Galeria
+            </button>
+
+            <div class="main-player-layout" id="playerLayout">
+                <!-- Container do Player (Iframe do Google Drive) -->
+                <div class="video-container" id="videoContainerWrapper">
+                    <iframe id="driveIframe" src="" allow="autoplay" allowfullscreen></iframe>
+                </div>
+
+                <!-- Painel Lateral de Informações e Próximos Vídeos -->
+                <aside class="sidebar" id="sidebar">
+                    <div class="video-info">
+                        <h2 id="currentTitle">Título do Vídeo</h2>
+                        <p id="currentDesc">Descrição detalhada do vídeo selecionado.</p>
+                    </div>
+
+                    <div class="related-section" id="relatedSection">
+                        <h3>Mais Vídeos</h3>
+                        <div id="relatedList" class="related-list"></div>
+                    </div>
+                </aside>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Arquivo JS Externo -->
+    <script src="script.js"></script>
+</body>
+</html>
