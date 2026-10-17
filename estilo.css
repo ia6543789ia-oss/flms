@@ -201,6 +201,14 @@ body {
     grid-template-columns: 1fr;
 }
 
+/* CONTAINER DO PLAYER ADAPTADO PARA MOBILE */
+.video-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
 .video-container {
     position: relative;
     width: 100%;
@@ -218,6 +226,27 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+/* BOTÃO DE TELA CHEIA / ROTAÇÃO */
+.rotate-fullscreen-btn {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--bg-hover);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.rotate-fullscreen-btn:hover {
+    background: var(--primary);
 }
 
 /* SIDEBAR E VÍDEOS RELACIONADOS */
@@ -309,6 +338,10 @@ body {
     }
 
     .container {
-        padding: 1rem;
+        padding: 0.75rem;
+    }
+
+    .btn-back {
+        margin-bottom: 1rem;
     }
 }

@@ -15,7 +15,7 @@
     <header class="header">
         <div class="logo">
             <i class="fa-solid fa-circle-play"></i>
-            <span>CinePlay</span>
+            <span>Teste seu poder / Test your might</span>
         </div>
         <div class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -42,9 +42,15 @@
             </button>
 
             <div class="main-player-layout" id="playerLayout">
-                <!-- Container do Player (Para o vídeo principal do Drive) -->
-                <div class="video-container" id="videoContainerWrapper">
-                    <iframe id="mainIframe" src="" allow="autoplay" allowfullscreen></iframe>
+                <!-- Container do Player com Wrapper Proporcional -->
+                <div class="video-container-wrapper" id="videoWrapper">
+                    <div class="video-container" id="videoContainer">
+                        <iframe id="mainIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    </div>
+                    <!-- Botão de Tela Cheia / Rotação Automática -->
+                    <button id="rotateFullscreenBtn" class="rotate-fullscreen-btn" title="Tela Cheia e Girar Tela">
+                        <i class="fa-solid fa-expand"></i> Tela Cheia / Girar
+                    </button>
                 </div>
 
                 <!-- Painel Lateral de Informações e Próximos Vídeos -->
